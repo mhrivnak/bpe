@@ -103,7 +103,7 @@ func timer(delay time.Duration, notify chan uint64, runNum uint64) {
 func manageQueue() {
 	readyToRun <- true
 	// Many timers might be attached to this channel, but only the first one
-	// to fire will matter. The rest will be ignored.
+	// to fire will matter for any particular run. The rest will be ignored.
 	start := make(chan uint64)
 	queue := make(chan RunRequest)
 	var runNum uint64 = 0
